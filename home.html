@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Maps Example</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script>
+      let appLoaded = false;
+
+      function initMap() {
+        if (appLoaded) {
+          window.initMapApp();
+        } else {
+          window.initMapPending = true;
+        }
+      }
+    </script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiRFBqSsu6yDuToqh6ZmO1oMqej1fEaws&libraries=geometry&callback=initMap"
+      async
+      defer
+    ></script>
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <div id="panorama" style="width: 100%; height: 100%"></div>
+    <div id="leaderboard" style="display: none">This is the leaderboard</div>
+
+    <!-- Mobile Menu -->
+    <!-- ... -->
+    <button
+      id="goBack"
+      onclick="location.href='index.html';"
+      style="font-size: 30px"
+    >
+      &#x2B05;
+    </button>
+    <div id="health-bar"></div>
+    <div id="map"></div>
+
+    <!-- ... -->
+  </body>
+</html>

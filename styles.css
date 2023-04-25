@@ -1,0 +1,206 @@
+/* Style the leaderboard */
+#leaderboard {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+}
+
+#leaderboard li {
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.popup-content {
+  width: 90%; /* Adjust the width of the popup */
+  max-width: 400px; /* Limit the maximum width of the popup */
+  font-size: 16px; /* Adjust the font size */
+  line-height: 1.5; /* Adjust the line spacing */
+}
+
+@media (max-width: 480px) {
+  /* Styles for smaller screens (phones) */
+  .popup-content {
+    font-size: 1008px; /* Adjust the font size */
+  }
+}
+
+/* Style the form */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+button[type="submit"] {
+  padding: 10px;
+  font-size: 20px;
+  color: #fff;
+  background-color: rgb(102, 80, 39);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #a97d0c;
+}
+
+/* Style the map container */
+/* Set the map to cover the full screen */
+#map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the mobile menu */
+#mobile-menu {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+#menu-button {
+  display: block;
+  background-color: #fff;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#menu-list {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  list-style: none;
+}
+
+#menu-list li {
+  margin: 5px 0;
+}
+
+#menu-list a {
+  text-decoration: none;
+  color: #333;
+}
+
+#menu-button:focus + #menu-list,
+#menu-list:focus {
+  display: block;
+}
+
+@keyframes shine {
+  0% {
+    color: rgb(255, 0, 0);
+  }
+  50% {
+    color: rgb(0, 255, 0);
+  }
+  100% {
+    color: rgb(0, 0, 255);
+  }
+}
+
+#first-item {
+  animation: shine 2s ease-in-out infinite;
+}
+
+#username-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+#username-input {
+  display: block;
+  margin: 0 auto;
+}
+
+#username-form button {
+  display: block;
+  margin: 10px auto 0;
+}
+
+/* Add this to your styles.css file */
+#goBack {
+  background-color: rgb(102, 80, 39);
+  border: none;
+  color: white;
+  font-size: 20px;
+  padding: 10px 15px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  width: 300px;
+  height: 60px;
+  border-radius: 30px; /* set the border radius to half the height */
+}
+
+#goBack:hover {
+  background-color: #a97d0c;
+}
+
+#rankButton {
+  position: absolute;
+  z-index: 100;
+  top: 90px;
+  right: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 5px;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+
+#score {
+  position: absolute;
+  z-index: 100;
+  top: 60px;
+  right: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 5px;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+
+#welcome-message {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 1000;
+}
