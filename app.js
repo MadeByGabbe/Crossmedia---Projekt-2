@@ -172,7 +172,7 @@ function initMapApp() {
 
         var poodleLocation = {
           lat: 55.605372022499424,
-          lng: 12.992152093601026,
+          lng: 12.992152093601026
         };
 
         var poodleMarker = new google.maps.Marker({
@@ -180,6 +180,20 @@ function initMapApp() {
           map: map,
           icon: poodleIcon,
         });
+
+        setInterval(moveMarker, 10000)
+
+        function moveMarker() { 
+          var radius = 30; // meters
+          var randomAngle = Math.random() * 2 * Math.PI;
+          var randomRadius = Math.random() * radius;
+          var dx = randomRadius * Math.cos(randomAngle);
+          var dy = randomRadius * Math.sin(randomAngle);
+          var newLat = poodleLocation.lat + (dy / 111111);
+          var newLng = poodleLocation.lng + (dx / (111111 * Math.cos(poodleLocation.lat)));
+          var newLatLng = new google.maps.LatLng(newLat, newLng);
+          poodleMarker.setPosition(newLatLng);
+        }
 
         poodleMarker.addListener("click", handlePoodleClick);
 
@@ -362,10 +376,10 @@ function initMapApp() {
           usernameForm.style.display = "block";
         }
       },
-      function (error) {
-        console.error("Error:", error);
-      },
-      { timeout: 1000 }
+      // function (error) {
+      //   console.error("Error:", error);
+      // },
+      // { timeout: 1000 }
     );
 
     loadLeaderboard();
