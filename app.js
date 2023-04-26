@@ -149,19 +149,19 @@ function initMapApp() {
         // Define the POODLE
         var poodleIcon = {
           url: "images/poodle.png",
-          scaledSize: new google.maps.Size(50, 50),
+          scaledSize: new google.maps.Size(65, 65),
           id: 1,
         };
 
         var hotdogIcon = {
           url: "images/hotdog.png",
           scaledSize: new google.maps.Size(50, 50),
-          id: 2,
+          id: 20,
         };
 
         var hotdogLocation = {
-          lat: 55.60549811429528,
-          lng: 12.992144595179322,
+          lat: 55.603066357251976,
+          lng: 12.994165427169657,
         };
 
         var hotdogMarker = new google.maps.Marker({
@@ -189,16 +189,16 @@ function initMapApp() {
           if (hotdogCollected) {
             var dogId = poodleIcon.id;
             if (user.dogsCaptured && user.dogsCaptured[dogId]) {
-              window.alert("You've already collected the poodle!");
+              window.alert("Du har redan fångat pudeln!");
             } else {
               user.score += 10;
               user.dogsCaptured = { ...user.dogsCaptured, [dogId]: 1 };
               updateLeaderboard(user);
-              window.alert("You caught the poodle and collected points!");
+              window.alert("Du fångade pudeln och samlade poäng!");
             }
           } else {
             window.alert(
-              "You need to bring me a hotdog before you can collect me!"
+              "Vill du att jag följer med dig?, Hämta en hotdog till mig från Falafelmästaren!"
             );
           }
         }
@@ -213,7 +213,7 @@ function initMapApp() {
                 hotdogMarker.getPosition(),
                 userMarker.getPosition()
               );
-            if (distance < 100) {
+            if (distance < 5000) {
               hotdogCollected = true;
               user.dogsCaptured = { ...user.dogsCaptured, [dogId]: 1 };
               updateLeaderboard(user);
@@ -243,14 +243,14 @@ function initMapApp() {
         // Define the husky icon
         var huskyIcon = {
           url: "images/husky.png",
-          scaledSize: new google.maps.Size(50, 50),
+          scaledSize: new google.maps.Size(65, 65),
           id: 2, // set the ID of the dog to 2 for the husky
         };
 
         // Define the initial location for the husky marker
         var huskyInitialLocation = {
-          lat: 55.605372022499424,
-          lng: 12.993152093601026,
+          lat: 55.60498128234545,
+          lng: 12.992214079559767,
         };
 
         // Define the current location for the husky marker
@@ -276,7 +276,7 @@ function initMapApp() {
           );
 
           var dogId = huskyIcon.id; // get the dog ID from the marker icon
-          if (distance < 100) {
+          if (distance < 30000000) {
             // check if user is within 1 meter of the husky marker
             if (dogId === 2) {
               if (user.dogsCaptured && user.dogsCaptured[dogId]) {
@@ -297,10 +297,10 @@ function initMapApp() {
                 user.huskyJumpCount = jumpCount;
 
                 if (jumpCount >= 10) {
-                  user.score += 50; // give the user 50 credits for catching the husky
+                  user.score += 10; // give the user 10 credits for catching the husky
                   user.dogsCaptured = { ...user.dogsCaptured, [dogId]: 1 }; // add a new dog ID with a count of 1
                   updateLeaderboard(user);
-                  window.alert("You caught the husky and earned 50 credits!");
+                  window.alert("You caught the husky and earned 10 credits!");
                   huskyMarker.setMap(null); // remove the husky marker from the map
                 } else {
                   window.alert(
@@ -321,6 +321,54 @@ function initMapApp() {
         // Define the HUSKY
         // Define the HUSKY
 
+        // DEFINE THE SHIBA
+        // DEFINE THE SHIBA
+        // DEFINE THE SHIBA
+
+        var shibaIcon = {
+          url: "images/shiba.png",
+          scaledSize: new google.maps.Size(75, 75),
+          id: 3, // set the ID of the dog to 3 for the shiba
+        };
+
+        // Define the location for the shiba marker
+        var shibaLocation = {
+          lat: 55.60520782888914,
+          lng: 12.991357230724981,
+        };
+
+        // Create the shiba marker
+        var shibaMarker = new google.maps.Marker({
+          position: shibaLocation,
+          map: map,
+          icon: shibaIcon,
+        });
+
+        // Add a click event listener to the shiba marker
+        shibaMarker.addListener("click", handleShibaClick);
+
+        // Define the function that handles the click event for the shiba marker
+        function handleShibaClick() {
+          var dogId = shibaIcon.id; // get the dog ID from the marker icon
+          var passcode = prompt("Please enter the passcode to collect points:");
+          if (passcode === "123") {
+            if (user.dogsCaptured && user.dogsCaptured[dogId]) {
+              window.alert("You've already collected the shiba!");
+            } else {
+              user.score += 10; // give the user 10 points
+              user.dogsCaptured = { ...user.dogsCaptured, [dogId]: 1 }; // add a new dog ID with a count of 1
+              updateLeaderboard(user);
+              window.alert("You caught the shiba and collected points!");
+            }
+          } else {
+            window.alert("Incorrect passcode. Please try again.");
+          }
+        }
+
+        // DEFINE THE SHIBA
+        // DEFINE THE SHIBA
+        // DEFINE THE SHIBA
+
         function displayWelcomeMessage(username) {
           var welcomeMessage = document.createElement("div");
           welcomeMessage.id = "welcome-message";
@@ -334,7 +382,7 @@ function initMapApp() {
           if (username) {
             user.username = username;
             usernameForm.style.display = "none";
-            localStorage.setItem("username", username);
+            localStorage.setItem("user", JSON.stringify(user));
             displayWelcomeMessage(username);
 
             var savedTreasures = localStorage.getItem("treasures");

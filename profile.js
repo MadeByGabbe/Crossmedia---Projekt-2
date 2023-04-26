@@ -23,7 +23,7 @@ function showWelcomeMessage(username, score, dogsCaptured) {
           dogName = "Husky";
           break;
         case "3":
-          dogName = "Labrador";
+          dogName = "Shiba";
           break;
         case "4":
           dogName = "Chihuahua";
@@ -39,6 +39,9 @@ function showWelcomeMessage(username, score, dogsCaptured) {
           break;
         case "8":
           dogName = "Yorkshire Terrier";
+          break;
+        case "20":
+          dogName = " Hotdog";
           break;
         default:
           break;
