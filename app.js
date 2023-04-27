@@ -183,6 +183,19 @@ function initMapApp() {
 
         poodleMarker.addListener("click", handlePoodleClick);
 
+        // Move a marker randomly within a radius of x meters (use: setInterval moveMarker)
+        function moveMarkerRandom(marker, location) { 
+          var radius = 30; // meters
+          var randomAngle = Math.random() * 2 * Math.PI;
+          var randomRadius = Math.random() * radius;
+          var dx = randomRadius * Math.cos(randomAngle);
+          var dy = randomRadius * Math.sin(randomAngle);
+          var newLat = location.lat + (dy / 111111);
+          var newLng = location.lng + (dx / (111111 * Math.cos(location.lat)));
+          var newLatLng = new google.maps.LatLng(newLat, newLng);
+          marker.setPosition(newLatLng);
+        }
+
         var hotdogCollected = false;
 
         function handlePoodleClick() {
