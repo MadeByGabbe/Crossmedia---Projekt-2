@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  cursor: url('soap-bar2.png') -20 -20, auto;
+  /* touch-action: none; */
+}
+
+.game-container {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dirty-dog, .clean-dog {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  object-fit: contain;
+}
+
+.dirty-dog{
+  z-index: 1;
+  opacity: 1;
+}
+
+.clean-dog {
+  opacity: 0;
+}
+
+/* html {
+  cursor: url('soap-bar.png') 0 0, auto;
+} */
+
+/* html {
+  touch-action: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  background-image: url('soap-bar2.png');
+  background-size: 50px 50px;
+  background-repeat: no-repeat;
+  background-position: 25px 25px;
+} */
+
+.bubble {
+  position: absolute;
+  pointer-events: none;
+  z-index: 9999;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.6);
+  transition: all 0.5s ease-out;
+}
+
