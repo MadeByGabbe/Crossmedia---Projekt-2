@@ -61,6 +61,48 @@ button:hover {
   }
 }
 
+@media screen and (max-width: 500px) {
+
+  button {
+    font-size: 14px;
+    padding: 8px 16px;
+    min-width: 110px; /* Smaller min-width for smaller screens */
+  }
+
+  .button-container {
+    bottom: 24%;
+  }
+  
+  
+}
+
+@media screen and (max-width: 420px) {
+  button {
+    font-size: 12px;
+    padding: 8px 16px;
+    min-width: 100px; /* Smaller min-width for smaller screens */
+  }
+
+  .button-container {
+    bottom: 24%;
+  }
+  
+}
+
+@media screen and (max-width: 380px) {
+  .button-container {
+    bottom: 19%;
+  }
+  
+}
+
+@media screen and (max-width: 360px) {
+  .button-container {
+    bottom: 23%;
+  }
+  
+}
+
 .rubrik {
   font-family: "Dynapuff", cursive;
 }

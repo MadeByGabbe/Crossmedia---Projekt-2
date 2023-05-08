@@ -57,3 +57,28 @@ body {
   transition: all 0.5s ease-out;
 }
 
+.dogCleanDiv{
+  display: none;
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  border-radius: 20% 0px 20% 20%;
+  background-color: rgba(255, 255, 255, 1);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  border: 2px solid black;
+  top: 50%;
+  left: 5%;
+  gap: 10px;
+}
+
+.dogCleanButton{
+  padding: 20px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 20%;
+}
+

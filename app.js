@@ -174,14 +174,15 @@ function initMapApp() {
           lat: 55.605372022499424,
           lng: 12.992152093601026,
         };
+        
 
         var poodleMarker = new google.maps.Marker({
           position: poodleLocation,
           map: map,
           icon: poodleIcon,
         });
-
         poodleMarker.addListener("click", handlePoodleClick);
+
 
         // Move a marker randomly within a radius of x meters (use: setInterval moveMarker)
         function moveMarkerRandom(marker, location) { 
@@ -198,22 +199,33 @@ function initMapApp() {
 
         var hotdogCollected = false;
 
+        // function handlePoodleClick() {
+        //   if (hotdogCollected) {
+        //     var dogId = poodleIcon.id;
+        //     if (user.dogsCaptured && user.dogsCaptured[dogId]) {
+        //       window.alert("Du har redan fångat pudeln!");
+        //     } else {
+        //       user.score += 10;
+        //       user.dogsCaptured = { ...user.dogsCaptured, [dogId]: 1 };
+        //       updateLeaderboard(user);
+        //       window.alert("Du fångade pudeln och samlade poäng!");
+        //     }
+        //   } else {
+        //     window.alert(
+        //       "Vill du att jag följer med dig?, Hämta en hotdog till mig från Falafelmästaren!"
+        //     );
+        //   }
+        // }
+
         function handlePoodleClick() {
-          if (hotdogCollected) {
-            var dogId = poodleIcon.id;
-            if (user.dogsCaptured && user.dogsCaptured[dogId]) {
-              window.alert("Du har redan fångat pudeln!");
-            } else {
-              user.score += 10;
-              user.dogsCaptured = { ...user.dogsCaptured, [dogId]: 1 };
-              updateLeaderboard(user);
-              window.alert("Du fångade pudeln och samlade poäng!");
-            }
-          } else {
-            window.alert(
-              "Vill du att jag följer med dig?, Hämta en hotdog till mig från Falafelmästaren!"
-            );
-          }
+          console.log(user);
+          console.log("Poodle clicked");
+          var dogId = poodleIcon.id;
+          user.score += 10;
+          user.dogsCaptured = { ...user.dogsCaptured, [dogId]: 1 };
+          updateLeaderboard(user);
+          poodleMarker.setMap(null);
+          window.location.href = "PoodleGame/index.html";
         }
 
         function handleHotdogClick() {

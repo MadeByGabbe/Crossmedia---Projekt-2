@@ -7,6 +7,12 @@ let dirtyDogOpacity = 1;
 
 function revealCleanDog() {
   cleanDog.style.opacity = 1;
+  let dogCleanMessage = document.querySelector('.dogCleanDiv');
+  let dogCleanButton = document.querySelector('.dogCleanButton');
+  dogCleanMessage.style.display = 'flex';
+  dogCleanButton.addEventListener('click', () => {
+    window.location.href = "/home.html"
+   });
 }
 
 function handleSwipe(event) {
