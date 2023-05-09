@@ -14,13 +14,12 @@
 #welcome-message h1 {
   font-family: 'DynaPuff', cursive;
   color: #b4c884;
-  font-size: 24px;
   letter-spacing: 1px;
   color: #b4c884;
   -webkit-text-fill-color: #b4c884;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #414830;
-  font-size: 36px;
+  font-size: 95px;
   margin-bottom: 20px;
   color: #222222;
 }
