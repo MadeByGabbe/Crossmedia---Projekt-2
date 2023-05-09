@@ -49,16 +49,18 @@ input[type="text"] {
 button[type="submit"] {
   padding: 10px;
   font-size: 20px;
-  color: #fff;
-  background-color: rgb(102, 80, 39);
-  border: none;
+  color: #543a3a;
+  background-color: #ffd0d0;
+  border: 2px solid #d5aeae;
   border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
 button[type="submit"]:hover {
-  background-color: #a97d0c;
+  background-color: #543a3a;
+  color: #ffd0d0;
+  border-color: #ffd0d0;
 }
 
 /* Style the map container */
@@ -151,23 +153,26 @@ button[type="submit"]:hover {
 
 /* Add this to your styles.css file */
 #goBack {
-  background-color: rgb(102, 80, 39);
+  background-color: #ffd0d0;
   border: none;
-  color: white;
+  color: #543a3a;
+  padding-bottom: 5px;
   font-size: 20px;
-  padding: 10px 15px;
   cursor: pointer;
   position: absolute;
   top: 10px;
   left: 10px;
   z-index: 1000;
-  width: 300px;
+  width: 100px;
   height: 60px;
-  border-radius: 30px; /* set the border radius to half the height */
+  border-radius: 30px;
+  transition: background-color 0.3s;
+  /* set the border radius to half the height */
 }
 
 #goBack:hover {
-  background-color: #a97d0c;
+  background-color: #543a3a;
+  color: #ffd0d0;
 }
 
 #rankButton {
@@ -195,9 +200,19 @@ button[type="submit"]:hover {
 }
 
 #welcome-message {
+  font-family: "DynaPuff", cursive;
+  letter-spacing: 1px;
+  padding: 5px 5px;
+  min-width: 140px;
+  color: #b4c884;
+  -webkit-text-fill-color: #b4c884;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #414830;
+  background-color: #dff3f9;
+  border-radius: 20px;
   position: absolute;
   top: 10px;
-  left: 50%;
+  left: 77%;
   transform: translateX(-50%);
   font-size: 24px;
   font-weight: bold;
