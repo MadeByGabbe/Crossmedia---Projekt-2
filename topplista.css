@@ -1,5 +1,7 @@
 body {
   background-color: #e8f6fa;
+  font-family: "Inter", sans-serif;
+  font-size: 30px;
   margin: 0;
   padding: 0;
 }
@@ -12,9 +14,9 @@ body {
 
 h1 {
   font-family: 'DynaPuff', cursive;
-  font-size: 40px;
+  font-size: 100px;
   text-align: center;
-  margin-top: 30px;
+  margin-top: 70px;
   margin-bottom: 15px;
   letter-spacing: 1px;
   color: #b4c884;
@@ -27,16 +29,16 @@ h1 {
   background-color: #ffd0d0;
   border: none;
   color: #543a3a;
-  padding-bottom: 5px;
-  font-size: 20px;
+  font-size: 90px;
+  padding-bottom: 30px;
   cursor: pointer;
   position: absolute;
   top: 10px;
   left: 10px;
   z-index: 1000;
-  width: 100px;
-  height: 60px;
-  border-radius: 30px; /* set the border radius to half the height */
+  width: 200px;
+  height: 120px;
+  border-radius: 60px; /* set the border radius to half the height */
   transition: background-color 0.3s;
 }
 

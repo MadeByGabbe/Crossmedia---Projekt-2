@@ -25,12 +25,12 @@ body {
 
 .button-container {
   position: absolute;
+  top: 510px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0px;
-  bottom: 19%;
 }
 
 button {
@@ -52,6 +52,13 @@ button:hover {
   background-color: #543a3a;
   border-color: #ffd0d0;
   color: #ffd0d0;
+}
+
+@media screen and (max-width: 600px) {
+  .button-container {
+    position: absolute;
+    bottom: 200px;
+  }
 }
 
 @media screen and (max-width: 600px) {
