@@ -1,3 +1,5 @@
+// hej ehe
+
 function showWelcomeMessage(username, score, dogsCaptured) {
   var welcomeMessage = document.createElement("div");
   welcomeMessage.id = "welcome-message";
