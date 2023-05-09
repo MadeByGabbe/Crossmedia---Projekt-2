@@ -2,8 +2,8 @@
 
 body {
   margin: 0;
-  font-family: "Inter", Arial, sans-serif;
-  background-color: #4b3832; /* Brown background */
+  font-family: "Inter", sans-serif;
+  background-color: #d4f0f8;
 }
 
 .container {
@@ -30,34 +30,35 @@ body {
   justify-content: center;
   align-items: center;
   gap: 0px;
-  bottom: 14.5%;
+  bottom: 19%;
 }
 
 button {
-  background-color: #b08e56; /* Brown button background */
-  border: 2px solid #8c6e3c; /* Brown button border */
-  color: white;
-  padding: 15px 32px;
+  background-color: #ffd0d0;
+  border: 2px solid #d5aeae; 
+  color: #543a3a;
+  padding: 8px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  min-width: 150px; /* Ensure all buttons have the same width */
+  min-width: 130px; /* Ensure all buttons have the same width */
   transition: background-color 0.3s, border-color 0.3s;
 }
 
 button:hover {
-  background-color: #8c6e3c;
-  border-color: #704f2a;
+  background-color: #543a3a;
+  border-color: #ffd0d0;
+  color: #ffd0d0;
 }
 
 @media screen and (max-width: 600px) {
   button {
-    font-size: 14px;
-    padding: 12px 24px;
-    min-width: 120px; /* Smaller min-width for smaller screens */
+    font-size: 16px;
+    padding: 8px 20px;
+    min-width: 130px; /* Smaller min-width for smaller screens */
   }
 }
 
