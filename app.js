@@ -181,7 +181,7 @@ function initMapApp() {
           icon: poodleIcon,
         });
 
-        poodleMarker.addListener("click", handlePoodleClick);
+        poodleMarker.addListener("click", handlePoodleGameStart);
 
         // Move a marker randomly within a radius of x meters (use: setInterval moveMarker)
         function moveMarkerRandom(marker, location) { 
@@ -395,7 +395,7 @@ function initMapApp() {
           if (username) {
             user.username = username;
             usernameForm.style.display = "none";
-            localStorage.setItem("user", JSON.stringify(user));
+            localStorage.setItem("username", username);
             displayWelcomeMessage(username);
 
             var savedTreasures = localStorage.getItem("treasures");
