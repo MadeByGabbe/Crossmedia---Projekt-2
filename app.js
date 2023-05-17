@@ -184,6 +184,11 @@ function initMapApp() {
         poodleMarker.addListener("click", poodleGame);
 
         function poodleGame() {
+          if (user.dogsCaptured && user.dogsCaptured[poodleIcon.id]) {
+              window.alert("Du har redan fångat pudeln!");
+              return;
+           }
+
           const gameContainer = document.querySelector('.game-container');
           const dirtyDog = document.querySelector('.dirty-dog');
           const cleanDog = document.querySelector('.clean-dog');
@@ -228,6 +233,15 @@ function initMapApp() {
               user.score += 10;
               user.dogsCaptured = { ...user.dogsCaptured, [poodleIcon.id]: 1 };
               updateLeaderboard(user);
+              console.log("yes");
+              gameContainer.style.display = "none";
+            });
+
+            dogMessageButton.addEventListener('click', function () {
+              user.score += 10;
+              user.dogsCaptured = { ...user.dogsCaptured, [poodleIcon.id]: 1 };
+              updateLeaderboard(user);
+              console.log("yes");
               gameContainer.style.display = "none";
             });
           }
