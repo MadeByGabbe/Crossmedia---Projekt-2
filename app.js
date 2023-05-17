@@ -144,18 +144,19 @@ function initMapApp() {
           userMarker.setPosition(location);
         }
 
-        // Define the POODLE
-        // Define the POODLE
-        // Define the POODLE
-        var poodleIcon = {
-          url: "images/poodle.png",
-          scaledSize: new google.maps.Size(65, 65),
-          id: 1,
+        // Define the English Bulldog
+        // Define the English Bulldog
+        // Define the English Bulldog
+
+        var englishbulldogIcon = {
+          url: "images/bulldog.png",
+          scaledSize: new google.maps.Size(75, 175),
+          id: 5,
         };
 
         var hotdogIcon = {
           url: "images/hotdog.png",
-          scaledSize: new google.maps.Size(50, 50),
+          scaledSize: new google.maps.Size(100, 150),
           id: 20,
         };
 
@@ -170,16 +171,17 @@ function initMapApp() {
           icon: hotdogIcon,
         });
 
-        var poodleLocation = {
+        var englishbulldogLocation = {
           lat: 55.605372022499424,
           lng: 12.992152093601026,
         };
 
-        var poodleMarker = new google.maps.Marker({
-          position: poodleLocation,
+        var englishbulldogMarker = new google.maps.Marker({
+          position: englishbulldogLocation,
           map: map,
-          icon: poodleIcon,
+          icon: englishbulldogIcon,
         });
+
 
         poodleMarker.addListener("click", poodleGame);
 
@@ -325,22 +327,24 @@ function initMapApp() {
           marker.setPosition(newLatLng);
         }
 
+        englishbulldogMarker.addListener("click", handleenglishbulldogClick);
+
         var hotdogCollected = false;
 
-        function handlePoodleClick() {
+        function handleenglishbulldogClick() {
           if (hotdogCollected) {
-            var dogId = poodleIcon.id;
+            var dogId = englishbulldogIcon.id;
             if (user.dogsCaptured && user.dogsCaptured[dogId]) {
-              window.alert("Du har redan fångat pudeln!");
+              window.alert("Du har redan fångat engelsk bulldog!");
             } else {
               user.score += 10;
               user.dogsCaptured = { ...user.dogsCaptured, [dogId]: 1 };
               updateLeaderboard(user);
-              window.alert("Du fångade pudeln och samlade poäng!");
+              window.alert("Du fångade engelska bulldog och samlade poäng!");
             }
           } else {
             window.alert(
-              "Vill du att jag följer med dig?, Hämta en hotdog till mig från Falafelmästaren!"
+              "- Francis den III:e Vill du att jag följer med dig vof.. vof..?, hämta varmkorven till mig från Falafelmästaren lite längre ner i parken!"
             );
           }
         }
@@ -348,120 +352,30 @@ function initMapApp() {
         function handleHotdogClick() {
           var dogId = hotdogIcon.id;
           if (user.dogsCaptured && user.dogsCaptured[dogId]) {
-            window.alert("You've already collected the hotdog!");
+            window.alert("Du har redan samlat varmkorven!");
           } else {
             var distance =
               google.maps.geometry.spherical.computeDistanceBetween(
                 hotdogMarker.getPosition(),
                 userMarker.getPosition()
               );
-            if (distance < 5000) {
+            if (distance < 10) {
               hotdogCollected = true;
               user.dogsCaptured = { ...user.dogsCaptured, [dogId]: 1 };
               updateLeaderboard(user);
-              window.alert(
-                "You've collected the hotdog! Now bring it to the poodle to collect it."
-              );
+              window.alert("Du har samlat varmkorven!.");
               hotdogMarker.setMap(null);
             } else {
-              window.alert(
-                "You need to be closer to the hotdog to collect it."
-              );
+              window.alert("Du måste vara närmare varmkorven.");
             }
           }
         }
 
         hotdogMarker.addListener("click", handleHotdogClick);
 
-        // Define the POODLE
-        // Define the POODLE
-        // Define the POODLE
-
-        // Define the HUSKY
-        // Define the HUSKY
-        // Define the HUSKY
-
-        // Define the husky icon
-        // Define the husky icon
-        var huskyIcon = {
-          url: "images/husky.png",
-          scaledSize: new google.maps.Size(65, 65),
-          id: 2, // set the ID of the dog to 2 for the husky
-        };
-
-        // Define the initial location for the husky marker
-        var huskyInitialLocation = {
-          lat: 55.60498128234545,
-          lng: 12.992214079559767,
-        };
-
-        // Define the current location for the husky marker
-        var huskyCurrentLocation = huskyInitialLocation;
-
-        // Create the husky marker
-        var huskyMarker = new google.maps.Marker({
-          position: huskyInitialLocation,
-          map: map,
-          icon: huskyIcon,
-        });
-
-        // Define the function that handles the click event for the husky marker
-        function handleHuskyClick() {
-          // Get the distance between the user and the husky marker
-          var userLocation = {
-            lat: user.latitude,
-            lng: user.longitude,
-          };
-          var distance = google.maps.geometry.spherical.computeDistanceBetween(
-            new google.maps.LatLng(userLocation),
-            new google.maps.LatLng(huskyCurrentLocation)
-          );
-
-          var dogId = huskyIcon.id; // get the dog ID from the marker icon
-          if (distance < 30000000) {
-            // check if user is within 1 meter of the husky marker
-            if (dogId === 2) {
-              if (user.dogsCaptured && user.dogsCaptured[dogId]) {
-                window.alert("You've already collected the husky!");
-              } else {
-                // increment the jump count and update the husky's current location
-                var jumpCount = user.huskyJumpCount || 0;
-                huskyCurrentLocation = {
-                  lat:
-                    huskyCurrentLocation.lat +
-                    Math.random() * 0.0001 * (Math.random() < 0.5 ? -1 : 1),
-                  lng:
-                    huskyCurrentLocation.lng +
-                    Math.random() * 0.0001 * (Math.random() < 0.5 ? -1 : 1),
-                };
-                huskyMarker.setPosition(huskyCurrentLocation);
-                jumpCount++;
-                user.huskyJumpCount = jumpCount;
-
-                if (jumpCount >= 10) {
-                  user.score += 10; // give the user 10 credits for catching the husky
-                  user.dogsCaptured = { ...user.dogsCaptured, [dogId]: 1 }; // add a new dog ID with a count of 1
-                  updateLeaderboard(user);
-                  window.alert("You caught the husky and earned 10 credits!");
-                  huskyMarker.setMap(null); // remove the husky marker from the map
-                } else {
-                  window.alert(
-                    "The husky jumped away! Keep clicking to catch it!"
-                  );
-                }
-              }
-            }
-          } else {
-            window.alert("You're too far away from the husky to catch it!");
-          }
-        }
-
-        // Add a click event listener to the husky marker
-        huskyMarker.addListener("click", handleHuskyClick);
-
-        // Define the HUSKY
-        // Define the HUSKY
-        // Define the HUSKY
+        // Define the English Bulldog
+        // Define the English Bulldog
+        // Define the English Bulldog
 
         // DEFINE THE SHIBA
         // DEFINE THE SHIBA
@@ -469,14 +383,14 @@ function initMapApp() {
 
         var shibaIcon = {
           url: "images/shiba.png",
-          scaledSize: new google.maps.Size(75, 75),
+          scaledSize: new google.maps.Size(75, 130),
           id: 3, // set the ID of the dog to 3 for the shiba
         };
 
         // Define the location for the shiba marker
         var shibaLocation = {
-          lat: 55.60520782888914,
-          lng: 12.991357230724981,
+          lat: 55.60318936427057,
+          lng: 12.98605771075296,
         };
 
         // Create the shiba marker
@@ -492,24 +406,333 @@ function initMapApp() {
         // Define the function that handles the click event for the shiba marker
         function handleShibaClick() {
           var dogId = shibaIcon.id; // get the dog ID from the marker icon
-          var passcode = prompt("Please enter the passcode to collect points:");
-          if (passcode === "123") {
+          var passcode = prompt("-Lola, imponera mig för att få lösenkoden!:");
+          if (passcode === "shine") {
             if (user.dogsCaptured && user.dogsCaptured[dogId]) {
-              window.alert("You've already collected the shiba!");
+              window.alert("Du har redan fångat Shiban!");
             } else {
               user.score += 10; // give the user 10 points
               user.dogsCaptured = { ...user.dogsCaptured, [dogId]: 1 }; // add a new dog ID with a count of 1
               updateLeaderboard(user);
-              window.alert("You caught the shiba and collected points!");
+              window.alert("Du har fångat shiban och fått poäng!");
             }
           } else {
-            window.alert("Incorrect passcode. Please try again.");
+            window.alert("- Lola, Fel lösenord, prova igen.");
           }
         }
 
         // DEFINE THE SHIBA
         // DEFINE THE SHIBA
         // DEFINE THE SHIBA
+
+        // DEFINE THE HUSKY
+        // DEFINE THE HUSKY
+        // DEFINE THE HUSKY
+
+        var huskyIcon = {
+          url: "images/husky.png",
+          scaledSize: new google.maps.Size(75, 130),
+          id: 2, // set the ID of the dog to 2 for the husky
+        };
+
+        // Define the location for the husky marker
+        var huskyLocation = {
+          lat: 55.60272524698542,
+          lng: 12.990935926577087,
+        };
+
+        // Create the husky marker
+        var huskyMarker = new google.maps.Marker({
+          position: huskyLocation,
+          map: map,
+          icon: huskyIcon,
+        });
+
+        // Add a click event listener to the husky marker
+        huskyMarker.addListener("click", handleHuskyClick);
+
+        // Define the function that handles the click event for the husky marker
+        function handleHuskyClick() {
+          var dogId = huskyIcon.id; // get the dog ID from the marker icon
+          var passcode = prompt("-Arya hitta min boll för att få lösenkoden:");
+          if (passcode === "sommar") {
+            if (user.dogsCaptured && user.dogsCaptured[dogId]) {
+              window.alert("Du har redan fångat Huskyn!");
+            } else {
+              user.score += 10; // give the user 10 points
+              user.dogsCaptured = { ...user.dogsCaptured, [dogId]: 1 }; // add a new dog ID with a count of 1
+              updateLeaderboard(user);
+              window.alert("Du fångade Huskyn och samlade poäng !");
+            }
+          } else {
+            window.alert("Fel lösenkod, prova igen!");
+          }
+        }
+
+        // DEFINE THE HUSKY
+        // DEFINE THE HUSKY
+        // DEFINE THE HUSKY
+
+        // DEFINE THE TAX
+        // DEFINE THE TAX
+        // DEFINE THE TAX
+
+        var taxIcon = {
+          url: "images/tax.png",
+          scaledSize: new google.maps.Size(75, 130),
+          id: 8, // set the ID of the dog to 2 for the tax
+        };
+
+        // Define the location for the tax marker
+        var taxLocation = {
+          lat: 55.604195759782094,
+          lng: 12.98952533299405,
+        };
+
+        // Create the tax marker
+        var taxMarker = new google.maps.Marker({
+          position: taxLocation,
+          map: map,
+          icon: taxIcon,
+        });
+
+        // Add a click event listener to the tax marker
+        taxMarker.addListener("click", handleTaxClick);
+
+        // Define the function that handles the click event for the tax marker
+        function handleTaxClick() {
+          var dogId = taxIcon.id; // get the dog ID from the marker icon
+          var passcode = prompt(
+            "-King, Vinn mot gamla gubben i sten, sax, påse för att få lösenkoden:"
+          );
+          if (passcode === "glad") {
+            if (user.dogsCaptured && user.dogsCaptured[dogId]) {
+              window.alert("Du har redan fångat Taxen!");
+            } else {
+              user.score += 10; // give the user 10 points
+              user.dogsCaptured = { ...user.dogsCaptured, [dogId]: 1 }; // add a new dog ID with a count of 1
+              updateLeaderboard(user);
+              window.alert("Du fångade Taxen och samlade poäng !");
+            }
+          } else {
+            window.alert("Fel lösenkod, prova igen!");
+          }
+        }
+
+        // DEFINE THE TAX
+        // DEFINE THE TAX
+        // DEFINE THE TAX
+
+        // Click event Hotdog
+        // Click event Hotdog
+        // Click event Hotdog
+
+        function handleHotdogClick() {
+          var dogId = hotdogIcon.id;
+          var distance = google.maps.geometry.spherical.computeDistanceBetween(
+            hotdogMarker.getPosition(),
+            userMarker.getPosition()
+          );
+          if (distance < 10) {
+            hotdogCollected = true;
+            user.dogsCaptured = { ...user.dogsCaptured, [dogId]: 1 };
+            updateLeaderboard(user);
+            window.alert("Du har samlat varmkorven!.");
+            hotdogMarker.setMap(null);
+          } else {
+            window.alert("Du måste vara närmare varmkorven.");
+          }
+        }
+
+        hotdogMarker.addListener("click", handleHotdogClick);
+
+        // Click event Hotdog
+        // Click event Hotdog
+        // Click event Hotdog
+
+        // DEFINE THE ROTTWEILER
+        // DEFINE THE ROTTWEILER
+        // DEFINE THE ROTTWEILER
+
+        var rottweilerIcon = {
+          url: "images/rottweiler.png",
+          scaledSize: new google.maps.Size(75, 130),
+          id: 30, // set the ID of the dog to 2 for the rottweiler
+        };
+
+        // Define the location for the rottweiler marker
+        var rottweilerLocation = {
+          lat: 55.604148936345396,
+          lng: 12.985029925130261,
+        };
+
+        // Create the rottweiler marker
+        var rottweilerMarker = new google.maps.Marker({
+          position: rottweilerLocation,
+          map: map,
+          icon: rottweilerIcon,
+        });
+
+        // Add a click event listener to the rottweiler marker
+        rottweilerMarker.addListener("click", handleRottweilerClick);
+
+        // Define the function that handles the click event for the rottweiler marker
+        function handleRottweilerClick() {
+          var dogId = rottweilerIcon.id; // get the dog ID from the marker icon
+          var passcode = prompt(
+            "-Bamse, hitta ett ben, för att få lösenkoden:"
+          );
+          if (passcode === "giveon") {
+            if (user.dogsCaptured && user.dogsCaptured[dogId]) {
+              window.alert("Du har redan fångat Rottweilern!");
+            } else {
+              user.score += 10; // give the user 10 points
+              user.dogsCaptured = { ...user.dogsCaptured, [dogId]: 1 }; // add a new dog ID with a count of 1
+              updateLeaderboard(user);
+              window.alert("Du fångade Rottweilern och samlade poäng!");
+            }
+          } else {
+            window.alert("Fel lösenkod, prova igen!");
+          }
+        }
+
+        // DEFINE THE ROTTWEILER
+        // DEFINE THE ROTTWEILER
+        // DEFINE THE ROTTWEILER
+
+        // Define the CANECORSO
+        // Define the CANECORSO
+        // Define the CANECORSO
+
+        var canecorsoIcon = {
+          url: "images/canecorso.png",
+          scaledSize: new google.maps.Size(75, 125),
+          id: 31, // set the ID of the dog to 3 for the canecorso
+        };
+
+        // Define the initial location for the canecorso marker
+        var canecorsoInitialLocation = {
+          lat: 55.60172125633804,
+          lng: 12.992361954184194,
+        };
+
+        // Define the current location for the canecorso marker
+        var canecorsoCurrentLocation = canecorsoInitialLocation;
+
+        // Create the canecorso marker
+        var canecorsoMarker = new google.maps.Marker({
+          position: canecorsoInitialLocation,
+          map: map,
+          icon: canecorsoIcon,
+        });
+
+        // Define the function that handles the click event for the canecorso marker
+        function handleCanecorsoClick() {
+          // Get the distance between the user and the canecorso marker
+          var userLocation = {
+            lat: user.latitude,
+            lng: user.longitude,
+          };
+          var distance = google.maps.geometry.spherical.computeDistanceBetween(
+            new google.maps.LatLng(userLocation),
+            new google.maps.LatLng(canecorsoCurrentLocation)
+          );
+
+          var dogId = canecorsoIcon.id; // get the dog ID from the marker icon
+          if (distance < 3) {
+            // check if user is within 1 meter of the canecorso marker
+            if (dogId === 31) {
+              if (user.dogsCaptured && user.dogsCaptured[dogId]) {
+                window.alert("Du har redan fångat Cane Corson!");
+              } else {
+                // increment the jump count and update the canecorso's current location
+                var jumpCount = user.canecorsoJumpCount || 0;
+                canecorsoCurrentLocation = {
+                  lat:
+                    canecorsoCurrentLocation.lat +
+                    Math.random() * 0.0001 * (Math.random() < 0.5 ? -1 : 1),
+                  lng:
+                    canecorsoCurrentLocation.lng +
+                    Math.random() * 0.0001 * (Math.random() < 0.5 ? -1 : 1),
+                };
+                canecorsoMarker.setPosition(canecorsoCurrentLocation);
+                jumpCount++;
+                user.canecorsoJumpCount = jumpCount;
+
+                if (jumpCount >= 10) {
+                  user.score += 10; // give the user 10 credits for catching the canecorso
+                  user.dogsCaptured = { ...user.dogsCaptured, [dogId]: 1 }; // add a new dog ID with a count of 1
+                  updateLeaderboard(user);
+                  window.alert("Du fångade Cane Corson!");
+                  canecorsoMarker.setMap(null); // remove the canecorso marker from the map
+                } else {
+                  window.alert(
+                    "-Spike, du kan inte fånga mig, (Spike sprang iväg!)"
+                  );
+                }
+              }
+            }
+          } else {
+            window.alert("Du är för långt borta kom närmare");
+          }
+        }
+
+        // Add a click event listener to the canecorso marker
+        canecorsoMarker.addListener("click", handleCanecorsoClick);
+
+        // Define the CANECORSO
+        // Define the CANECORSO
+        // Define the CANECORSO
+
+        // Define the owner
+        // Define the owner
+        // Define the owner
+
+        // Define the owner icon
+        var ownerIcon = {
+          url: "images/owner.png",
+          scaledSize: new google.maps.Size(75, 130),
+          id: 42, // behövs ej
+        };
+
+        // Define the location for the owner marker
+        var ownerLocation = {
+          lat: 55.60530166796243,
+          lng: 12.991493044211184,
+        };
+
+        // Create the owner marker
+        var ownerMarker = new google.maps.Marker({
+          position: ownerLocation,
+          map: map,
+          icon: ownerIcon,
+        });
+
+        // Add a click event listener to the owner marker
+        ownerMarker.addListener("click", handleOwnerClick);
+
+        // Define the function that handles the click event for the owner marker
+        function handleOwnerClick() {
+          var dogIds = [31, 1]; // Dog IDs that need to be captured
+          var hasAllDogs = dogIds.every(function (id) {
+            return user.dogsCaptured && user.dogsCaptured[id];
+          });
+
+          if (hasAllDogs) {
+            // User has captured all required dogs
+            window.alert("Tack så mycket för hjälpen, ha en bra sommar!");
+            // Perform owner-related actions here
+          } else {
+            // User hasn't captured all required dogs
+            window.alert(
+              "Tjenare de bra om du kan rasta mina hundar vi ses här igen om 1h!"
+            );
+          }
+        }
+
+        // Define the owner
+        // Define the owner
+        // Define the owner
 
         function displayWelcomeMessage(username) {
           var welcomeMessage = document.createElement("div");
@@ -526,6 +749,8 @@ function initMapApp() {
             usernameForm.style.display = "none";
             localStorage.setItem("username", username);
             displayWelcomeMessage(username);
+            user.score += 0;
+            updateLeaderboard(user);
 
             var savedTreasures = localStorage.getItem("treasures");
             if (savedTreasures) {
