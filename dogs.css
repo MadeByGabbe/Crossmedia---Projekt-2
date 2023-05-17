@@ -3,8 +3,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: "Press Start 2P", cursive;
-  font-size: 24px;
+  
   text-align: center;
   background-color: #ffffff;
   padding: 20px;
@@ -13,7 +12,14 @@
 }
 
 #welcome-message h1 {
-  font-size: 36px;
+  font-family: 'DynaPuff', cursive;
+  color: #b4c884;
+  letter-spacing: 1px;
+  color: #b4c884;
+  -webkit-text-fill-color: #b4c884;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #414830;
+  font-size: 95px;
   margin-bottom: 20px;
   color: #222222;
 }

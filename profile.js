@@ -2,7 +2,7 @@ function showWelcomeMessage(username, score, dogsCaptured) {
   var welcomeMessage = document.createElement("div");
   welcomeMessage.id = "welcome-message";
   welcomeMessage.innerHTML =
-    "<h1>Hello " + username + "! Your score is " + score + ".</h1>";
+    "<h1>Hello " + username + "! Your score is " + score + "</h1>";
 
   if (dogsCaptured) {
     var dogsCapturedMessage = document.createElement("div");
