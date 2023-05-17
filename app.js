@@ -144,44 +144,33 @@ function initMapApp() {
           userMarker.setPosition(location);
         }
 
-        // Define the English Bulldog
-        // Define the English Bulldog
-        // Define the English Bulldog
-
-        var englishbulldogIcon = {
-          url: "images/bulldog.png",
-          scaledSize: new google.maps.Size(75, 175),
-          id: 5,
-        };
-
-        var hotdogIcon = {
-          url: "images/hotdog.png",
-          scaledSize: new google.maps.Size(100, 150),
-          id: 20,
-        };
-
-        var hotdogLocation = {
-          lat: 55.603066357251976,
-          lng: 12.994165427169657,
-        };
-
-        var hotdogMarker = new google.maps.Marker({
-          position: hotdogLocation,
-          map: map,
-          icon: hotdogIcon,
+        // go back btn
+        var goBackBtn = document.querySelector("#goBack")
+        goBackBtn.addEventListener("touchstart", function () {
+          window.location.href = "index.html";
         });
 
-        var englishbulldogLocation = {
-          lat: 55.605372022499424,
-          lng: 12.992152093601026,
+        // Define the Poodle
+        // Define the Poodle
+        // Define the Poodle
+
+
+        var poodleIcon = {
+          url: "images/poodle.png",
+          scaledSize: new google.maps.Size(65, 65),
+          id: 1,
         };
 
-        var englishbulldogMarker = new google.maps.Marker({
-          position: englishbulldogLocation,
+        var poodleLocation = {
+          lat: 55.60497685335,
+          lng: 12.992490002219716,
+        };
+        
+        var poodleMarker = new google.maps.Marker({
+          position: poodleLocation,
           map: map,
-          icon: englishbulldogIcon,
+          icon: poodleIcon,
         });
-
 
         poodleMarker.addListener("click", poodleGame);
 
@@ -215,9 +204,6 @@ function initMapApp() {
             dogMessageDiv.style.display = 'none';
             setEventListeners();
           });
-          
-        
-        
         
           let isSwiping = false;
           let dirtyDogOpacity = 1;
@@ -239,7 +225,7 @@ function initMapApp() {
               gameContainer.style.display = "none";
             });
 
-            dogMessageButton.addEventListener('click', function () {
+            dogMessageButton.addEventListener('touchstart', function () {
               user.score += 10;
               user.dogsCaptured = { ...user.dogsCaptured, [poodleIcon.id]: 1 };
               updateLeaderboard(user);
@@ -314,6 +300,51 @@ function initMapApp() {
             createBubble(event.clientX, event.clientY);
           });
         }
+
+        // Define the Poodle
+        // Define the Poodle
+        // Define the Poodle
+        
+
+
+        // Define the English Bulldog
+        // Define the English Bulldog
+        // Define the English Bulldog
+
+        var englishbulldogIcon = {
+          url: "images/bulldog.png",
+          scaledSize: new google.maps.Size(75, 175),
+          id: 5,
+        };
+
+        var hotdogIcon = {
+          url: "images/hotdog.png",
+          scaledSize: new google.maps.Size(100, 150),
+          id: 20,
+        };
+
+        var hotdogLocation = {
+          lat: 55.603066357251976,
+          lng: 12.994165427169657,
+        };
+
+        var hotdogMarker = new google.maps.Marker({
+          position: hotdogLocation,
+          map: map,
+          icon: hotdogIcon,
+        });
+
+        var englishbulldogLocation = {
+          lat: 55.605372022499424,
+          lng: 12.992152093601026,
+        };
+
+        var englishbulldogMarker = new google.maps.Marker({
+          position: englishbulldogLocation,
+          map: map,
+          icon: englishbulldogIcon,
+        });
+
         // Move a marker randomly within a radius of x meters (use: setInterval moveMarker)
         function moveMarkerRandom(marker, location) { 
           var radius = 30; // meters
