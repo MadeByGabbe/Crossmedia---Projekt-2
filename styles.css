@@ -167,7 +167,7 @@ button[type="submit"]:hover {
   position: absolute;
   top: 10px;
   left: 10px;
-  z-index: 1000;
+  z-index: 100;
   width: 200px;
   height: 120px;
   border-radius: 60px;
@@ -302,6 +302,113 @@ button[type="submit"]:hover {
 }
 
 .dog-message-button{
+  width: 60%;
+  height: 20%;
+  background-color: white;
+  border: 2px solid black;
+  font-size: 30px;
+}
+
+/* Poodle Game */
+
+/* Chihuahua Game */
+
+.chichiGameContainer{
+  position: relative;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: wheat;
+  z-index: 200;
+}
+
+.handbags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.handbag {
+  width: 200px;
+  height: 200px;
+  margin: 20px;
+}
+
+#checkButton {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  font-size: 32px;
+  height: 150px;
+  width: 300px;
+}
+
+#chihuahua-container {
+  width: 80vw;
+  height: 0;
+  padding-bottom: 80%; /* Maintain aspect ratio */
+  margin: 20px auto;
+  border: 2px solid black;
+  position: relative;
+  overflow: hidden;
+  background-color: white;
+}
+
+#chihuahua {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#timer-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+#timer {
+  font-size: 18px;
+}
+
+#timer-value {
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.handbag.selected {
+  border: 2px solid rgb(0, 0, 0);
+}
+
+.chichi-dog-message{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 0 20% 20% 20%;
+  padding: 40px;
+  width: 40%;
+  height: 20%;
+  border: 4px solid black;
+  z-index: 2;
+  font-size: 40px;
+  gap: 10%;
+  right: 5%;
+  top: 57%;
+}
+
+.chichi-dog-message p {
+  margin: 0;
+}
+
+.chichi-dog-message-button{
   width: 60%;
   height: 20%;
   background-color: white;

@@ -157,7 +157,7 @@ function initMapApp() {
 
         var poodleIcon = {
           url: "images/poodle.png",
-          scaledSize: new google.maps.Size(65, 65),
+          scaledSize: new google.maps.Size(100, 125),
           id: 1,
         };
 
@@ -305,6 +305,160 @@ function initMapApp() {
         // Define the Poodle
         // Define the Poodle
         
+        // Define the Chihuahua
+        // Define the Chihuahua
+        // Define the Chihuahua
+
+        var chihuahuaIcon = {
+          url: "images/chichi.png",
+          scaledSize: new google.maps.Size(100, 125),
+          id: 4,
+        };
+
+        var chihuahuaLocation = {
+          lat: 55.60295791913047,
+          lng: 12.98953396653704,
+        };
+        
+        var chihuahuaMarker = new google.maps.Marker({
+          position: chihuahuaLocation,
+          map: map,
+          icon: chihuahuaIcon,
+        });
+
+        chihuahuaMarker.addListener("click", chihuahuaGame);
+
+        function chihuahuaGame() {
+
+          let correctHandbagId = "handbag1"; // Replace with the correct handbag ID
+          let penaltyTime = 10; // Penalty time in seconds
+
+          const handbags = Array.from(document.querySelectorAll('.handbag'));
+          const checkButton = document.getElementById('checkButton');
+          const chihuahuaContainer = document.getElementById('chihuahua-container');
+          const chihuahua = document.getElementById('chihuahua');
+          const timerValue = document.getElementById('timer-value');
+          const chichiGameContainer = document.querySelector('.chichiGameContainer');
+
+          let selectedHandbag = null;
+          let penaltyActive = false;
+          let timerInterval = null;
+          let timeRemaining = penaltyTime;
+
+          chichiGameContainer.style.display = 'flex';
+          let chichiDogMessageDiv = document.createElement('div');
+          let chichiDogMessage = document.createElement('p');
+          let chichiDogMessageButton = document.createElement('button');
+          chichiDogMessageDiv.classList.add('chichi-dog-message');
+          chichiGameContainer.appendChild(chichiDogMessageDiv);
+          chichiDogMessageDiv.appendChild(chichiDogMessage);
+          chichiDogMessage.classList.add('chichi-dog-message-text');
+          chichiDogMessage.innerHTML = 'Voff Voff! Hj\u00E4lp mig hitta r\u00E4tt väska, den borde ha samma f\u00E4rg som mitt halsband, så hänger jag med dig!';
+          chichiDogMessageButton.classList.add('chichi-dog-message-button');
+          chichiDogMessageButton.innerHTML = 'Ok, jag ska hjälpa dig!';
+          chichiDogMessageDiv.appendChild(chichiDogMessageButton);
+          chichiDogMessageButton.addEventListener('click', () => {
+            chichiDogMessageDiv.style.display = 'none';
+            setEventListeners();
+          });
+          chichiDogMessageButton.addEventListener('touchstart', () => {
+            chichiDogMessageDiv.style.display = 'none';
+            setEventListeners();
+          });
+
+          function setEventListeners() {
+            handbags.forEach(handbag => {
+              handbag.addEventListener('click', () => {
+                if (penaltyActive) return;
+                if (selectedHandbag) selectedHandbag.classList.remove('selected');
+                selectedHandbag = handbag;
+                selectedHandbag.classList.add('selected');
+              });
+            });
+
+            checkButton.addEventListener('click', () => {
+              if (penaltyActive || !selectedHandbag) return;
+
+              if (selectedHandbag.getAttribute("data-handbag-id") === correctHandbagId) {
+                chihuahuaContainer.style.backgroundColor = "green";
+                alert("Correct handbag! Good job!");
+                endGame();
+              } else {
+                chihuahuaContainer.style.backgroundColor = "red";
+                alert("Wrong handbag! Try again.");
+                activatePenalty();
+              }
+            });
+          }
+
+          function endGame() {
+
+            let chichiDogMessageDiv = document.querySelector('.chichi-dog-message');
+            let chichiDogMessage = document.querySelector('.chichi-dog-message-text');
+            let chichiDogMessageButton = document.querySelector('.chichi-dog-message-button');
+            chichiDogMessage.innerHTML = 'Tack f\u00F6r hj\u00E4lpen! Du har f\u00E5ngat mig!';
+            chichiDogMessageDiv.style.display = 'flex';
+          
+            chichiDogMessageButton.innerHTML = 'F\u00E5nga';
+            chichiDogMessageButton.addEventListener('click', function () {
+              user.score += 10;
+              user.dogsCaptured = { ...user.dogsCaptured, [chihuahuaIcon.id]: 4 };
+              updateLeaderboard(user);
+              console.log("yes");
+              chichiGameContainer.style.display = "none";
+            });
+
+            chichiDogMessageButton.addEventListener('touchstart', function () {
+              user.score += 10;
+              user.dogsCaptured = { ...user.dogsCaptured, [chihuahuaIcon.id]: 4 };
+              updateLeaderboard(user);
+              console.log("yes");
+              chichiGameContainer.style.display = "none";
+            });
+          }
+
+          function activatePenalty() {
+            penaltyActive = true;
+            checkButton.disabled = true;
+            startTimer();
+            setTimeout(() => {
+              penaltyActive = false;
+              checkButton.disabled = false;
+              resetGame();
+              resetTimer();
+            }, penaltyTime * 1000);
+          }
+
+          function startTimer() {
+            clearInterval(timerInterval);
+            timeRemaining = penaltyTime;
+            timerInterval = setInterval(() => {
+              timeRemaining--;
+              if (timeRemaining <= 0) {
+                clearInterval(timerInterval);
+              }
+              timerValue.textContent = timeRemaining;
+            }, 1000);
+          }
+
+          function resetGame() {
+            if (selectedHandbag) {
+              selectedHandbag.classList.remove('selected');
+              selectedHandbag = null;
+            }
+            chihuahuaContainer.style.backgroundColor = "initial";
+            clearInterval(timerInterval);
+            timerValue.textContent = "";
+          }
+
+          function resetTimer() {
+            clearInterval(timerInterval);
+            timerValue.textContent = "";
+            checkButton.disabled = false;
+          }
+        }
+
+
 
 
         // Define the English Bulldog
