@@ -1,0 +1,68 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  flex-direction: column;
+}
+
+.handbags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.handbag {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+}
+
+#checkButton {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+#chihuahua-container {
+  width: 80vw;
+  max-width: 300px;
+  height: 0;
+  padding-bottom: 80%; /* Maintain aspect ratio */
+  margin: 20px auto;
+  border: 2px solid black;
+  position: relative;
+  overflow: hidden;
+}
+
+#chihuahua {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#timer-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+#timer {
+  font-size: 18px;
+}
+
+#timer-value {
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.handbag.selected {
+  border: 2px solid rgb(0, 0, 0);
+}
+
