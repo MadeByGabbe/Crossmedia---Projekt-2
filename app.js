@@ -150,6 +150,123 @@ function initMapApp() {
           window.location.href = "index.html";
         });
 
+        var leashBtn = document.querySelector("#showLeash");
+        leashBtn.addEventListener("touchstart", function () {
+          window.location.href = "dogs.html";
+        });
+
+        // Intro
+        if (localStorage.length === 0) {
+          var intro = document.querySelector(".talkWithOwnerDiv");
+          intro.style.display = "flex";
+          var introBtn = document.querySelector(".talkWithOwnerBtn");
+          introBtn.addEventListener("touchstart", function () {
+            intro.style.display = "none";
+            displayDogsRunAway();
+          });
+        }
+
+        function displayDogsRunAway() {
+          var dogsRunAway = document.querySelector(".dogsRunsAwayDiv");
+          dogsRunAway.style.display = "flex";
+          var dogsRunAwayBtn = document.querySelector(".dogsRunsAwayBtn");
+          dogsRunAwayBtn.addEventListener("touchstart", function () {
+            dogsRunAway.style.display = "none";
+            displayGameInfo();
+          });
+        }
+
+        function displayGameInfo() {
+          var gameInfo = document.querySelector(".gameInfo");
+          gameInfo.style.display = "flex";
+          var gameInfoBtn = document.querySelector(".gameInfoBtn");
+          gameInfoBtn.addEventListener("touchstart", function () {
+            gameInfo.style.display = "none";
+          });
+        }
+
+        // Timer/Countdown
+
+        function countdown() {
+          var countdownElement = document.getElementById("countdown");
+        
+          var endTime = localStorage.getItem("countdownEndTime");
+          if (endTime) {
+            startCountdown(new Date(endTime), countdownElement);
+          } else {
+            var endDate = new Date();
+            endDate.setHours(endDate.getHours() + 2); // Set end time to 2 hours from now
+            startCountdown(endDate, countdownElement);
+            localStorage.setItem("countdownEndTime", endDate);
+          }
+        }
+        
+        function startCountdown(endTime, countdownElement) {
+          var timer = setInterval(function() {
+            var now = new Date();
+            var remainingTime = endTime - now;
+        
+            if (remainingTime <= 0) {
+              clearInterval(timer);
+              countdownElement.textContent = "00:00:00"; // Countdown is finished
+              loseGame();
+              localStorage.removeItem("countdownEndTime");
+            } else {
+              countdownElement.textContent = formatTime(remainingTime);
+            }
+          }, 1000); // Update every second
+        }
+        
+        function formatTime(time) {
+          var hours = Math.floor(time / (1000 * 60 * 60));
+          var minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((time % (1000 * 60)) / 1000);
+        
+          var formattedTime = hours.toString().padStart(2, '0') + ":" +
+                              minutes.toString().padStart(2, '0') + ":" +
+                              seconds.toString().padStart(2, '0');
+          return formattedTime;
+        }
+        
+        window.onload = function() {
+          countdown();
+        };
+        
+        // Lose/Win game
+
+        function loseGame() {
+          var loseGame = document.querySelector(".loseGameDiv");
+          loseGame.style.display = "flex";
+          var loseGameBtn = document.querySelector(".loseGameBtn");
+          loseGameBtn.addEventListener("touchstart", function () {
+            loseGame.style.display = "none";
+            localStorage.clear();
+            window.location.href = "index.html";
+          });
+        }
+
+        function winGame() {
+          var winGame = document.querySelector(".winGameDiv");
+          winGame.style.display = "flex";
+          var winGameBtn = document.querySelector(".winGameBtn");
+          winGameBtn.addEventListener("touchstart", function () {
+            winGame.style.display = "none";
+            localStorage.clear();
+            window.location.href = "index.html";
+          });
+        }
+        
+        setInterval(function () {
+          console.log("hej");
+          if(user.dogsCaptured) {
+            if (Object.keys(user.dogsCaptured).length === 9) {
+              winGame();
+            }
+          }
+         }, 5000);
+        
+
+
         // Define the Poodle
         // Define the Poodle
         // Define the Poodle
@@ -178,7 +295,17 @@ function initMapApp() {
           if (user.dogsCaptured && user.dogsCaptured[poodleIcon.id]) {
               window.alert("Du har redan fångat pudeln!");
               return;
-           }
+          }
+          
+          var distance = google.maps.geometry.spherical.computeDistanceBetween(
+            poodleMarker.getPosition(),
+            userMarker.getPosition()
+          );
+
+          if (distance > 10) {
+            window.alert("Du är för långt bort från Pudeln!");
+            return;
+          }
 
           const gameContainer = document.querySelector('.game-container');
           const dirtyDog = document.querySelector('.dirty-dog');
@@ -329,6 +456,20 @@ function initMapApp() {
         chihuahuaMarker.addListener("click", chihuahuaGame);
 
         function chihuahuaGame() {
+          if (user.dogsCaptured && user.dogsCaptured[chihuahuaIcon.id]) {
+            window.alert("Du har redan fångat chihuahuan!");
+            return;
+          }
+
+          var distance = google.maps.geometry.spherical.computeDistanceBetween(
+            chihuahuaMarker.getPosition(),
+            userMarker.getPosition()
+          );
+
+          if (distance > 10) {
+            window.alert("Du är för långt bort från chihuahuan!");
+            return;
+          }
 
           let correctHandbagId = "handbag1"; // Replace with the correct handbag ID
           let penaltyTime = 10; // Penalty time in seconds
@@ -639,7 +780,19 @@ function initMapApp() {
         // Define the function that handles the click event for the husky marker
         function handleHuskyClick() {
           var dogId = huskyIcon.id; // get the dog ID from the marker icon
-          var passcode = prompt("-Arya hitta min boll för att få lösenkoden:");
+
+          var circle = new google.maps.Circle({
+            strokeColor: "#FF0000",
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: "#FF0000",
+            fillOpacity: 0.35,
+            map,
+            center: huskyLocation,
+            radius: 5,
+          });
+
+          var passcode = prompt("-Arya hitta min boll, den ligger här någonstans, när du hittat den kolla efter lösenkoden och skriv in den här:");
           if (passcode === "sommar") {
             if (user.dogsCaptured && user.dogsCaptured[dogId]) {
               window.alert("Du har redan fångat Huskyn!");
@@ -764,6 +917,18 @@ function initMapApp() {
         // Define the function that handles the click event for the rottweiler marker
         function handleRottweilerClick() {
           var dogId = rottweilerIcon.id; // get the dog ID from the marker icon
+
+          var circle = new google.maps.Circle({
+            strokeColor: "#FF0000",
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: "#FF0000",
+            fillOpacity: 0.35,
+            map,
+            center: rottweilerLocation,
+            radius: 5,
+          });
+
           var passcode = prompt(
             "-Bamse, hitta ett ben, för att få lösenkoden:"
           );

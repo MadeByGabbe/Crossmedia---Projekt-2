@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8" />
     <title>Google Maps Example</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,13 +40,35 @@
     <div id="health-bar"></div>
     <div id="map"></div>
 
+    <div id="countdown"></div>
+    <button id="showLeash" onclick="window.location.href='dogs.html'">
+      <img src="/images/leash.png" alt="Leash" />
+    </button>
     <!-- ... -->
 
+    <!-- Intro -->
+    <div class="talkWithOwnerDiv">
+      <p class="talkWithOwnerText">Pratar med ägaren</p>
+      <button class="talkWithOwnerBtn">Fortsätt</button>
+    </div>
+
+    <div class="dogsRunsAwayDiv">
+      <p class="dogsRunsAwayText">Hundarna springer iväg</p>
+      <button class="dogsRunsAwayBtn">Fortsätt</button>
+    </div>
+
+    <div class="gameInfo">
+      <p class="gameInfoText">Hundarna har sprungit iväg och du har nu 2 timmar på dig innan ägaren vill ha tillbaka hundarna. Fånga in hundarna utspridda i parken för att vinna!</p>
+      <button class="gameInfoBtn">Fortsätt</button>
+    </div>
+
+    <!-- PoodleGame -->
     <div class="game-container">
       <img class="dirty-dog" src="/PoodleGame/dirty-dog.png">
       <img class="clean-dog" src="/PoodleGame/clean-dog.png">
     </div>
 
+    <!-- ChihuahuaGame -->
     <div class="chichiGameContainer">
       <div class="handbags">
         <img src="/ChihuahuaGame/handbag1.png" id="handbag1" class="handbag" data-handbag-id="handbag1">
@@ -60,5 +83,16 @@
         <img src="/images/chichi.png" id="chihuahua" class="chihuahua">
       </div>
     </div>
+
+    <!-- Lose/Win game -->
+    <div class="loseGameDiv">
+      <p class="loseGameText">Du förlorade spelet</p>
+      <button class="loseGameBtn">Starta om</button>
+    </div>
+
+    <div class="winGameDiv">
+      <p class="winGameText">Du vann spelet</p>
+    <button class="winGameBtn">Fortsätt</button>
+
   </body>
 </html>
