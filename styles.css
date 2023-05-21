@@ -1,3 +1,7 @@
+body {
+  margin: 0%;
+}
+
 /* Style the leaderboard */
 #leaderboard {
   list-style-type: none;
@@ -425,6 +429,10 @@ button[type="submit"]:hover {
 
 /* Intro */
 
+p, button{
+  font-family: 'DynaPuff', cursive;
+}
+
 .talkWithOwnerDiv {
   position: relative;
   height: 100vh;
@@ -435,6 +443,9 @@ button[type="submit"]:hover {
   align-items: center;
   z-index: 100;
   flex-direction: column;
+  background-image: url('images/ägare.png');
+  top: 0%;
+  right: 1.5%;
 }
 
 .talkWithOwnerDiv p {
@@ -442,9 +453,53 @@ button[type="submit"]:hover {
   font-weight: bold;
   text-align: center;
   margin: 0;
+  position: absolute;
+  top: 5%;
+  left: 15%;
+  width: 600px;
 }
 
 .talkWithOwnerDiv button {
+  width: 300px;
+  height: 150px;
+  background-color: white;
+  border: 2px solid black;
+  font-size: 30px;
+  margin-top: 20px;
+  position: absolute;
+  top: 25%;
+  left: 30%;
+}
+
+.walkWithDogsDiv {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f5f5f5;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  flex-direction: column;
+  background-image: url('images/spelare_med_hundar.png');
+}
+
+.walkWithDogsDiv p {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  position: absolute;
+  top: 2%;
+  left: 5%;
+  background-color: white;
+  border: 2px solid black;
+  padding: 40px;
+  border-radius: 20%;
+  width: 500px;
+}
+
+.walkWithDogsDiv button {
   width: 300px;
   height: 150px;
   background-color: white;
@@ -465,6 +520,7 @@ button[type="submit"]:hover {
   align-items: center;
   z-index: 100;
   flex-direction: column;
+  background-image: url('images/spelare_utan_hundar.png');
 }
 
 .dogsRunsAwayDiv p {
@@ -472,6 +528,14 @@ button[type="submit"]:hover {
   font-weight: bold;
   text-align: center;
   margin: 0;
+  position: absolute;
+  top: 2%;
+  left: 5%;
+  background-color: white;
+  border: 2px solid black;
+  padding: 40px;
+  border-radius: 20%;
+  width: 500px;
 }
 
 .dogsRunsAwayDiv button {
@@ -502,7 +566,33 @@ button[type="submit"]:hover {
   font-weight: bold;
   text-align: center;
   margin: 0;
+  position: absolute;
+  top: 2%;
+  left: 5%;
+  background-color: white;
+  border: 2px solid black;
+  padding: 40px;
+  border-radius: 20%;
+  width: 500px;
 }
+
+#gameInfoText1{
+  top: 2%;
+  left: 5%;
+}
+
+#gameInfoText2{
+  top: 35%;
+  left: 39%;
+  border-radius: 20% 20% 0 20%;
+}
+
+#gameInfoText3{
+  top: 60%;
+  left: 1%;
+  border-radius: 20% 20% 20% 0;
+}
+
 
 .gameInfo button {
   width: 300px;
@@ -527,6 +617,8 @@ button[type="submit"]:hover {
   align-items: center;
   z-index: 100;
   flex-direction: column;
+  background-image: url('images/gameover.gif');
+  background-size: contain;
 }
 
 .loseGameDiv p {
@@ -544,7 +636,7 @@ button[type="submit"]:hover {
   font-size: 30px;
   margin-top: 20px;
   position: absolute;
-  top: 80%;
+  top: 55%;
 }
 
 .winGameDiv{
