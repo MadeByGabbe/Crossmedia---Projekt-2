@@ -162,9 +162,19 @@ function initMapApp() {
           var introBtn = document.querySelector(".talkWithOwnerBtn");
           introBtn.addEventListener("touchstart", function () {
             intro.style.display = "none";
-            displayDogsRunAway();
+            displayWalkWithDogs();
           });
         }
+
+        function displayWalkWithDogs() {
+          var walkWithDogs = document.querySelector(".walkWithDogsDiv");
+          walkWithDogs.style.display = "flex";
+          var walkWithDogsBtn = document.querySelector(".walkWithDogsBtn");
+          walkWithDogsBtn.addEventListener("touchstart", function () {
+            walkWithDogs.style.display = "none";
+            displayDogsRunAway();
+          });
+         }
 
         function displayDogsRunAway() {
           var dogsRunAway = document.querySelector(".dogsRunsAwayDiv");
@@ -1087,7 +1097,7 @@ function initMapApp() {
         function displayWelcomeMessage(username) {
           var welcomeMessage = document.createElement("div");
           welcomeMessage.id = "welcome-message";
-          welcomeMessage.textContent = "Welcome : " + username;
+          welcomeMessage.textContent = "Välkommen : " + username;
           document.body.appendChild(welcomeMessage);
         }
 
