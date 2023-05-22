@@ -532,11 +532,11 @@ function initMapApp() {
 
               if (selectedHandbag.getAttribute("data-handbag-id") === correctHandbagId) {
                 chihuahuaContainer.style.backgroundColor = "green";
-                alert("Correct handbag! Good job!");
+                alert("Det va den rätta väskan! Bra jobbat!");
                 endGame();
               } else {
                 chihuahuaContainer.style.backgroundColor = "red";
-                alert("Wrong handbag! Try again.");
+                alert("Fel väska! Försök igen.");
                 activatePenalty();
               }
             });
