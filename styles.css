@@ -577,8 +577,9 @@ p, button{
 }
 
 #gameInfoText1{
-  top: 2%;
-  left: 5%;
+  top: 10%;
+  left: 1%;
+  border-radius: 20% 20% 20% 0;
 }
 
 #gameInfoText2{

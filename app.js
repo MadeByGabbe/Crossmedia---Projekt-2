@@ -379,7 +379,7 @@ function initMapApp() {
               const element = document.elementFromPoint(x, y);
               if (element === dirtyDog) {
                 if (dirtyDogOpacity > 0.005) {
-                  element.style.opacity = dirtyDogOpacity = dirtyDogOpacity - 0.005; // Change this to change the speed of cleaning	
+                  element.style.opacity = dirtyDogOpacity = dirtyDogOpacity - 0.001; // Change this to change the speed of cleaning	
                   cleanDog.style.opacity = 1 - dirtyDogOpacity;
                 }
                 if (parseFloat(element.style.opacity) === 0.005) {

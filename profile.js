@@ -2,13 +2,13 @@ function showWelcomeMessage(username, score, dogsCaptured) {
   var welcomeMessage = document.createElement("div");
   welcomeMessage.id = "welcome-message";
   welcomeMessage.innerHTML =
-    "<h1>Hello " + username + "! Your score is " + score + "</h1>";
+    "<h1>Hej " + username + "! Du har " + score + " poäng</h1>";
 
   if (dogsCaptured) {
     var dogsCapturedMessage = document.createElement("div");
     dogsCapturedMessage.style.fontSize = "24px";
     dogsCapturedMessage.style.marginTop = "20px";
-    dogsCapturedMessage.textContent = "You have captured:";
+    dogsCapturedMessage.textContent = "Du har fångat:";
     welcomeMessage.appendChild(dogsCapturedMessage);
 
     var dogsList = document.createElement("ul");
