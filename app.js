@@ -618,7 +618,7 @@ function initMapApp() {
 
         var englishbulldogIcon = {
           url: "images/bulldog.png",
-          scaledSize: new google.maps.Size(75, 175),
+          scaledSize: new google.maps.Size(100, 200),
           id: 5,
         };
 
@@ -1043,56 +1043,6 @@ function initMapApp() {
         // Define the CANECORSO
         // Define the CANECORSO
         // Define the CANECORSO
-
-        // Define the owner
-        // Define the owner
-        // Define the owner
-
-        // Define the owner icon
-        var ownerIcon = {
-          url: "images/owner.png",
-          scaledSize: new google.maps.Size(75, 130),
-          id: 42, // behövs ej
-        };
-
-        // Define the location for the owner marker
-        var ownerLocation = {
-          lat: 55.60530166796243,
-          lng: 12.991493044211184,
-        };
-
-        // Create the owner marker
-        var ownerMarker = new google.maps.Marker({
-          position: ownerLocation,
-          map: map,
-          icon: ownerIcon,
-        });
-
-        // Add a click event listener to the owner marker
-        ownerMarker.addListener("click", handleOwnerClick);
-
-        // Define the function that handles the click event for the owner marker
-        function handleOwnerClick() {
-          var dogIds = [31, 1]; // Dog IDs that need to be captured
-          var hasAllDogs = dogIds.every(function (id) {
-            return user.dogsCaptured && user.dogsCaptured[id];
-          });
-
-          if (hasAllDogs) {
-            // User has captured all required dogs
-            window.alert("Tack så mycket för hjälpen, ha en bra sommar!");
-            // Perform owner-related actions here
-          } else {
-            // User hasn't captured all required dogs
-            window.alert(
-              "Tjenare de bra om du kan rasta mina hundar vi ses här igen om 1h!"
-            );
-          }
-        }
-
-        // Define the owner
-        // Define the owner
-        // Define the owner
 
         function displayWelcomeMessage(username) {
           var welcomeMessage = document.createElement("div");
